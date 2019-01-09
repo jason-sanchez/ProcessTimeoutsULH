@@ -13,8 +13,8 @@ Imports System.Data.SqlClient
 
 Module Module1
     'Public objIniFile As New INIFile("d:\W3Production\HL7Mapper.ini")
-    'Private fullinipath As String = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory, "..\..\..\Configs\ULH\HL7Mapper.ini")) ' New test
-    Private fullinipath As String = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory, "..\..\..\..\..\..\..\..\..\Configs\ULH\HL7Mapper.ini")) 'local
+    Private fullinipath As String = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory, "..\..\..\Configs\ULH\HL7Mapper.ini")) ' New test
+    'Private fullinipath As String = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory, "..\..\..\..\..\..\..\..\..\Configs\ULH\HL7Mapper.ini")) 'local
     Public objIniFile As New INIFile(fullinipath) '20140817 - New Test
     Dim strLogDirectory As String = ""
     Dim functionError As Boolean = False
@@ -91,7 +91,7 @@ Module Module1
             Dim parent As String = objIniFile.GetString("Settings", "parentDir", "(none)") & "\"
 
             strLogDirectory = direct & parent & objIniFile.GetString("Settings", "logs", "(none)")
-            Dim strOutputDirectory As String = direct & parent & objIniFile.GetString("ULH", "ULHoutputdirectory", "(none)") 'Like d:\W3Feeds\NVP\Mcare\
+            Dim strOutputDirectory As String = direct & parent & objIniFile.GetString("ULH_MCARE", "ULH_MCAREoutputdirectory", "(none)") 'Like d:\W3Feeds\NVP\Mcare\
             Dim strBackupDirectory As String = strOutputDirectory & "backup\"
             Dim strReprocessDirectory As String = strOutputDirectory & "reprocess\"
 
@@ -171,6 +171,8 @@ Module Module1
 
             Dim direct As String = objIniFile.GetString("Settings", "directory", "(none)") & ":\"
             Dim parent As String = objIniFile.GetString("Settings", "parentDir", "(none)") & "\"
+            'Dim direct As String = "N:\"
+            'Dim parent As String = objIniFile.GetString("Settings", "parentDir", "(none)") & "\"
 
             strLogDirectory = direct & parent & objIniFile.GetString("Settings", "logs", "(none)")
             Dim strOutputDirectory As String = direct & parent & objIniFile.GetString("ITW", "ITWoutputdirectory", "(none)") 'Like d:\W3Feeds\NVP\Mcare\
